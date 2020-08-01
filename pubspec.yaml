@@ -26,6 +26,9 @@ dependencies:
   double_back_to_close_app: ^1.2.0
   flutter_gifimage: ^1.0.1
   circle_wheel_scroll: ^0.0.1+1
+  rflutter_alert: ^1.0.3
+  audioplayers: ^0.15.1
+  foldable_sidebar: ^1.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -76,6 +79,7 @@ flutter:
     - images/wedges.jpg
     - images/pudding.jpg
     - images/icon.png
+    - assets/click.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:food_app/about_app.dart';
 import 'package:food_app/dev_info.dart';
+import 'package:food_app/quiz_section.dart';
 import './color.dart';
 import 'package:flutter_gifimage/flutter_gifimage.dart';
 import './foodlist.dart';
@@ -16,7 +18,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       context: context,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15))),
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+        ),
         elevation: 15,
         backgroundColor: HexColor('#d38f12'),
         title: Text(
@@ -86,6 +89,104 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           ),
           backgroundColor: HexColor('#d38f12'),
         ),
+        drawer: Drawer(
+          child: Container(
+            color: HexColor('#d38f12'),
+            child: ListView(
+              children: <Widget>[
+                DrawerHeader(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundColor: HexColor('#d38f12'),
+                          radius: 45.0,
+                          child: Image.asset('images/icon.png'),
+                        ),
+                        Text(
+                          'Healthy Recipes',
+                          style: TextStyle(
+                              color: Colors.white,
+                              letterSpacing: 2,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Satisfy',
+                              fontSize: 25.0),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.question_answer,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    'HEALTH HACKS',
+                    style: TextStyle(
+                      fontFamily: 'Marvel',
+                      letterSpacing: 3,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) {
+                      return QuizSection();
+                    }));
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.description,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    'ABOUT APP',
+                    style: TextStyle(
+                      fontFamily: 'Marvel',
+                      letterSpacing: 3,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) {
+                      return AboutApp();
+                    }));
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.account_box,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    'DEVELOPER INFO',
+                    style: TextStyle(
+                      fontFamily: 'Marvel',
+                      letterSpacing: 3,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) {
+                      return DevInfo();
+                    }));
+                  },
+                ),
+              ],
+            ),
+          ),
+          elevation: 5,
+        ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
@@ -132,27 +233,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 height: 10,
               ),
               FoodList(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  FlatButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => DevInfo()),
-                    ),
-                    child: Text(
-                      'DEVELOPER INFO',
-                      style: TextStyle(
-                        fontFamily: 'Marvel',
-                        letterSpacing: 3,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
-                    ),
-                  )
-                ],
-              ),
             ],
           ),
         ),
