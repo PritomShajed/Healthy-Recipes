@@ -1,3 +1,4 @@
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import './color.dart';
 import './breakfast_items.dart';
@@ -68,10 +69,15 @@ class _BreakMenuState extends State<BreakMenu> with TickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   FlatButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => BreakFastitem()),
-                    ),
+                    onPressed: () {
+                      final player = AudioCache();
+                      player.play('click.mp3');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BreakFastitem()),
+                      );
+                    },
                     child: Text(
                       'ITEMS',
                       style: TextStyle(
@@ -84,10 +90,14 @@ class _BreakMenuState extends State<BreakMenu> with TickerProviderStateMixin {
                     ),
                   ),
                   FlatButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => FirstRow()),
-                    ),
+                    onPressed: () {
+                      final player = AudioCache();
+                      player.play('click.mp3');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FirstRow()),
+                      );
+                    },
                     child: Text(
                       'RECIPES',
                       style: TextStyle(

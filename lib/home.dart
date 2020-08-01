@@ -6,6 +6,7 @@ import 'package:food_app/quiz_section.dart';
 import './color.dart';
 import 'package:flutter_gifimage/flutter_gifimage.dart';
 import './foodlist.dart';
+import 'package:fancy_drawer/fancy_drawer.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -61,6 +62,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   }
 
   GifController controller1;
+  FancyDrawerController _controller;
   @override
   void initState() {
     controller1 = GifController(vsync: this);
@@ -69,174 +71,292 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     });
 
     super.initState();
+    _controller = FancyDrawerController(
+        vsync: this, duration: Duration(milliseconds: 250))
+      ..addListener(() {
+        setState(() {});
+      });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _backPress,
-      child: Scaffold(
-        backgroundColor: HexColor('#916108'),
-        appBar: AppBar(
-          title: Text(
-            'Healthy Recipes',
-            style: TextStyle(
-              color: Colors.white,
-              letterSpacing: 2,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Satisfy',
-            ),
-          ),
-          backgroundColor: HexColor('#d38f12'),
-        ),
-        drawer: Drawer(
-          child: Container(
-            color: HexColor('#d38f12'),
-            child: ListView(
+      child: Material(
+        child: FancyDrawerWrapper(
+          cornerRadius: 20,
+          hideOnContentTap: true,
+          backgroundColor: HexColor('#916108'),
+          controller: _controller,
+          drawerItems: <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                DrawerHeader(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        CircleAvatar(
-                          backgroundColor: HexColor('#d38f12'),
-                          radius: 45.0,
-                          child: Image.asset('images/icon.png'),
-                        ),
-                        Text(
-                          'Healthy Recipes',
-                          style: TextStyle(
-                              color: Colors.white,
-                              letterSpacing: 2,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Satisfy',
-                              fontSize: 25.0),
+                CircleAvatar(
+                  backgroundColor: HexColor('#916108'),
+                  radius: 45.0,
+                  child: Image.asset('images/icon.png'),
+                ),
+                Text(
+                  'Healthy Recipes',
+                  style: TextStyle(
+                      color: Colors.white,
+                      letterSpacing: 2,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Satisfy',
+                      fontSize: 25.0),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 1,
+              width: 160,
+              child: Divider(color: Colors.white38),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.question_answer,
+                color: Colors.white,
+              ),
+              title: Text(
+                'HEALTH HACKS',
+                style: TextStyle(
+                  fontFamily: 'Marvel',
+                  letterSpacing: 3,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (_) {
+                  return QuizSection();
+                }));
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.description,
+                color: Colors.white,
+              ),
+              title: Text(
+                'ABOUT APP',
+                style: TextStyle(
+                  fontFamily: 'Marvel',
+                  letterSpacing: 3,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (_) {
+                  return AboutApp();
+                }));
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.account_box,
+                color: Colors.white,
+              ),
+              title: Text(
+                'DEV INFO',
+                style: TextStyle(
+                  fontFamily: 'Marvel',
+                  letterSpacing: 3,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (_) {
+                  return DevInfo();
+                }));
+              },
+            ),
+          ],
+          child: Scaffold(
+            backgroundColor: HexColor('#916108'),
+            appBar: AppBar(
+              title: Text(
+                'Healthy Recipes',
+                style: TextStyle(
+                  color: Colors.white,
+                  letterSpacing: 2,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Satisfy',
+                ),
+              ),
+              backgroundColor: HexColor('#d38f12'),
+              leading: IconButton(
+                icon: Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  _controller.toggle();
+                },
+              ),
+            ),
+            body: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width: double.infinity,
+                    child: GifImage(
+                      image: AssetImage('images/bg.gif'),
+                      fit: BoxFit.cover,
+                      controller: controller1,
+                    ),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black87,
+                          blurRadius: 20,
+                          spreadRadius: 8,
                         ),
                       ],
                     ),
                   ),
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.question_answer,
-                    color: Colors.white,
+                  SizedBox(
+                    height: 15,
                   ),
-                  title: Text(
-                    'HEALTH HACKS',
+                  Text(
+                    'RECIPES',
                     style: TextStyle(
-                      fontFamily: 'Marvel',
-                      letterSpacing: 3,
-                      color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 15,
+                      fontFamily: 'Marvel',
+                      fontSize: 22,
+                      color: Colors.white,
+                      letterSpacing: 5,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 10,
+                    width: 150,
+                    child: Divider(
+                      color: Colors.white54,
                     ),
                   ),
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) {
-                      return QuizSection();
-                    }));
-                  },
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.description,
-                    color: Colors.white,
+                  SizedBox(
+                    height: 10,
                   ),
-                  title: Text(
-                    'ABOUT APP',
-                    style: TextStyle(
-                      fontFamily: 'Marvel',
-                      letterSpacing: 3,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) {
-                      return AboutApp();
-                    }));
-                  },
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.account_box,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    'DEVELOPER INFO',
-                    style: TextStyle(
-                      fontFamily: 'Marvel',
-                      letterSpacing: 3,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) {
-                      return DevInfo();
-                    }));
-                  },
-                ),
-              ],
+                  FoodList(),
+                ],
+              ),
             ),
-          ),
-          elevation: 5,
-        ),
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: <Widget>[
-              Container(
-                width: double.infinity,
-                child: GifImage(
-                  image: AssetImage('images/bg.gif'),
-                  fit: BoxFit.cover,
-                  controller: controller1,
-                ),
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black87,
-                      blurRadius: 20,
-                      spreadRadius: 8,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                'RECIPES',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Marvel',
-                  fontSize: 22,
-                  color: Colors.white,
-                  letterSpacing: 5,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 10,
-                width: 150,
-                child: Divider(
-                  color: Colors.white54,
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              FoodList(),
-            ],
           ),
         ),
       ),
     );
   }
 }
+// drawer: Drawer(
+//           child: Container(
+//             color: HexColor('#d38f12'),
+//             child: ListView(
+//               children: <Widget>[
+//                 DrawerHeader(
+//                   child: SingleChildScrollView(
+//                     scrollDirection: Axis.vertical,
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       crossAxisAlignment: CrossAxisAlignment.center,
+//                       children: <Widget>[
+//                         CircleAvatar(
+//                           backgroundColor: HexColor('#d38f12'),
+//                           radius: 45.0,
+//                           child: Image.asset('images/icon.png'),
+//                         ),
+//                         Text(
+//                           'Healthy Recipes',
+//                           style: TextStyle(
+//                               color: Colors.white,
+//                               letterSpacing: 2,
+//                               fontWeight: FontWeight.bold,
+//                               fontFamily: 'Satisfy',
+//                               fontSize: 25.0),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 ),
+// ListTile(
+//   leading: Icon(
+//     Icons.question_answer,
+//     color: Colors.white,
+//   ),
+//   title: Text(
+//     'HEALTH HACKS',
+//     style: TextStyle(
+//       fontFamily: 'Marvel',
+//       letterSpacing: 3,
+//       color: Colors.white,
+//       fontWeight: FontWeight.bold,
+//       fontSize: 15,
+//     ),
+//   ),
+//   onTap: () {
+//     Navigator.push(context, MaterialPageRoute(builder: (_) {
+//       return QuizSection();
+//     }));
+//   },
+// ),
+// ListTile(
+//   leading: Icon(
+//     Icons.description,
+//     color: Colors.white,
+//   ),
+//   title: Text(
+//     'ABOUT APP',
+//     style: TextStyle(
+//       fontFamily: 'Marvel',
+//       letterSpacing: 3,
+//       color: Colors.white,
+//       fontWeight: FontWeight.bold,
+//       fontSize: 15,
+//     ),
+//   ),
+//   onTap: () {
+//     Navigator.push(context, MaterialPageRoute(builder: (_) {
+//       return AboutApp();
+//     }));
+//   },
+// ),
+// ListTile(
+//   leading: Icon(
+//     Icons.account_box,
+//     color: Colors.white,
+//   ),
+//   title: Text(
+//     'DEVELOPER INFO',
+//     style: TextStyle(
+//       fontFamily: 'Marvel',
+//       letterSpacing: 3,
+//       color: Colors.white,
+//       fontWeight: FontWeight.bold,
+//       fontSize: 15,
+//     ),
+//   ),
+//   onTap: () {
+//     Navigator.push(context, MaterialPageRoute(builder: (_) {
+//       return DevInfo();
+//     }));
+//   },
+// ),
+//               ],
+//             ),
+//           ),
+//           elevation: 5,
+//         ),

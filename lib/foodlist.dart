@@ -1,3 +1,4 @@
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/breakfast_menu.dart';
 import 'package:food_app/dinner_menu.dart';
@@ -27,10 +28,14 @@ class FoodList extends StatelessWidget {
               ),
             ),
             FlatButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => BreakMenu()),
-              ),
+              onPressed: () {
+                final player = AudioCache();
+                player.play('click.mp3');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BreakMenu()),
+                );
+              },
               child: Text(
                 'BREAKFAST',
                 style: TextStyle(
@@ -55,10 +60,14 @@ class FoodList extends StatelessWidget {
               child: Divider(color: Colors.grey),
             ),
             FlatButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => LunchMenu()),
-              ),
+              onPressed: () {
+                final player = AudioCache();
+                player.play('click.mp3');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LunchMenu()),
+                );
+              },
               child: Text(
                 'LUNCH',
                 style: TextStyle(
@@ -83,10 +92,14 @@ class FoodList extends StatelessWidget {
               child: Divider(color: Colors.grey),
             ),
             FlatButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => DinnerMenu()),
-              ),
+              onPressed: () {
+                final player = AudioCache();
+                player.play('click.mp3');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DinnerMenu()),
+                );
+              },
               child: Text(
                 'DINNER',
                 style: TextStyle(
@@ -111,10 +124,14 @@ class FoodList extends StatelessWidget {
               child: Divider(color: Colors.grey),
             ),
             FlatButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SnacksMenu()),
-              ),
+              onPressed: () {
+                final player = AudioCache();
+                player.play('click.mp3');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SnacksMenu()),
+                );
+              },
               child: Text(
                 'SNACKS',
                 style: TextStyle(

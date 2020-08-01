@@ -61,6 +61,16 @@ class AboutApp extends StatelessWidget {
                       color: Colors.white54,
                     ),
                   ),
+                  Text(
+                    'Healthy Recipes is an easy-to-use application about making healthy recipes. This app offers you many healthy and light recipes. You will also find very useful health hacks for your daily life. Your health is the first concern of this app. Happy Eating 😊',
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontFamily: 'Marvel',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white60,
+                      letterSpacing: 2,
+                    ),
+                  ),
                 ],
               ),
             ],

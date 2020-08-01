@@ -91,7 +91,7 @@ class DevInfo extends StatelessWidget {
                         Icons.email,
                         color: HexColor('#916108'),
                       ),
-                      title: Text('sajedulislampritom@gmail.com'),
+                      title: Text('mrdeveloperguy@gmail.com'),
                     ),
                   ),
                 ],

@@ -1,3 +1,4 @@
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/snacks.dart';
 import 'package:food_app/snacks_items.dart';
@@ -20,6 +21,7 @@ class _SnacksMenuState extends State<SnacksMenu> with TickerProviderStateMixin {
 
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +41,7 @@ class _SnacksMenuState extends State<SnacksMenu> with TickerProviderStateMixin {
       body: Center(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-                child: Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -67,37 +69,45 @@ class _SnacksMenuState extends State<SnacksMenu> with TickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   FlatButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Snacksitem()),
-                  ),
-                  child: Text(
-                    'ITEMS',
-                    style: TextStyle(
-                      fontFamily: 'Marvel',
-                      letterSpacing: 3,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                    onPressed: () {
+                      final player = AudioCache();
+                      player.play('click.mp3');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Snacksitem()),
+                      );
+                    },
+                    child: Text(
+                      'ITEMS',
+                      style: TextStyle(
+                        fontFamily: 'Marvel',
+                        letterSpacing: 3,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
-                ),
-                FlatButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Snacks()),
-                  ),
-                  child: Text(
-                    'RECIPES',
-                    style: TextStyle(
-                      fontFamily: 'Marvel',
-                      letterSpacing: 3,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                  FlatButton(
+                    onPressed: () {
+                      final player = AudioCache();
+                      player.play('click.mp3');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Snacks()),
+                      );
+                    },
+                    child: Text(
+                      'RECIPES',
+                      style: TextStyle(
+                        fontFamily: 'Marvel',
+                        letterSpacing: 3,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
-                ),
                 ],
               ),
             ],

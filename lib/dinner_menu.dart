@@ -1,3 +1,4 @@
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/dinner_items.dart';
 import 'package:food_app/thirdrow.dart';
@@ -68,10 +69,14 @@ class _DinnerMenuState extends State<DinnerMenu> with TickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   FlatButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Dinneritem()),
-                    ),
+                    onPressed: () {
+                      final player = AudioCache();
+                      player.play('click.mp3');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Dinneritem()),
+                      );
+                    },
                     child: Text(
                       'ITEMS',
                       style: TextStyle(
@@ -84,10 +89,14 @@ class _DinnerMenuState extends State<DinnerMenu> with TickerProviderStateMixin {
                     ),
                   ),
                   FlatButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ThirdRow()),
-                    ),
+                    onPressed: () {
+                      final player = AudioCache();
+                      player.play('click.mp3');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ThirdRow()),
+                      );
+                    },
                     child: Text(
                       'RECIPES',
                       style: TextStyle(
