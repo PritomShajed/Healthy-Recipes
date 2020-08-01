@@ -98,10 +98,14 @@ class _QuizSectionState extends State<QuizSection> {
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Satisfy',
-                            fontSize: 22.0),
+                            fontSize: 25.0),
                       ),
                       SizedBox(
                         height: 30,
+                        width: 150,
+                        child: Divider(
+                          color: Colors.white54,
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
