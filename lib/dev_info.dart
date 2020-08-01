@@ -33,7 +33,7 @@ class DevInfo extends StatelessWidget {
               Column(
                 children: <Widget>[
                   Text(
-                    'Pritom Shajed',
+                    'Mr. Dev',
                     style: TextStyle(
                       fontSize: 40,
                       fontFamily: 'Satisfy',

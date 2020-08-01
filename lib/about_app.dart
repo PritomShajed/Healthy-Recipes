@@ -61,14 +61,18 @@ class AboutApp extends StatelessWidget {
                       color: Colors.white54,
                     ),
                   ),
-                  Text(
-                    'Healthy Recipes is an easy-to-use application about making healthy recipes. This app offers you many healthy and light recipes. You will also find very useful health hacks for your daily life. Your health is the first concern of this app. Happy Eating 😊',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontFamily: 'Marvel',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white60,
-                      letterSpacing: 2,
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Healthy Recipes is an easy-to-use application about making healthy recipes. This app offers you many healthy and light recipes. You will also find very useful health hacks for your daily life. Your health is the first concern of this app. Happy Eating 😊',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Marvel',
+                        letterSpacing: 3,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ],
@@ -95,13 +99,13 @@ class DetailedScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Hero(
-                    tag: 'app',
-                    child: Container(
-                      color: HexColor("#916108"),
-                      height: 170,
-                      width: 170,
-                      child: Image.asset('images/icon.png'),
-                    )),
+                      tag: 'app',
+                      child: Container(
+                        color: HexColor("#916108"),
+                        height: 170,
+                        width: 170,
+                        child: Image.asset('images/icon.png'),
+                      )),
                   SizedBox(
                     height: 20,
                     width: 130,
