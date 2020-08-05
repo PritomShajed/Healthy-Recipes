@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:food_app/color.dart';
+import 'package:food_app/home.dart';
 import './my_navigator.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 2), () => MyNavigator.goToHome(context));
+    Timer(Duration(seconds: 2), () => Navigator.push(context, MaterialPageRoute(builder: (context) => Home())));
   }
 
   @override

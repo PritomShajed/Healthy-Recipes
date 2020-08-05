@@ -64,7 +64,7 @@ class AboutApp extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      'Healthy Recipes is an easy-to-use application about making healthy recipes. This app offers you many healthy and light recipes. You will also find very useful health hacks for your daily life. Your health is the first concern of this app. Happy Eating 😊',
+                      'Healthy Recipes is a free-to-use application. This app offers you many healthy and light recipes. You will also find very useful health hacks for your daily life. Your health is the first concern of this app. Happy Eating 😊',
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'Marvel',

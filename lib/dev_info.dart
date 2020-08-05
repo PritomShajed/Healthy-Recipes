@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './color.dart';
 
 class DevInfo extends StatelessWidget {
@@ -69,7 +70,7 @@ class DevInfo extends StatelessWidget {
                     ),
                     child: ListTile(
                       leading: Icon(
-                        Icons.book,
+                        FontAwesomeIcons.graduationCap,
                         color: HexColor('#916108'),
                       ),
                       title: Text(

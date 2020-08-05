@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_app/about_app.dart';
+import 'package:food_app/bmi_calculator.dart';
 import 'package:food_app/dev_info.dart';
 import 'package:food_app/quiz_section.dart';
 import './color.dart';
@@ -92,6 +94,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         child: FancyDrawerWrapper(
           cornerRadius: 20,
           hideOnContentTap: true,
+          itemGap: 1,
           backgroundColor: HexColor('#916108'),
           controller: _controller,
           drawerItems: <Widget>[
@@ -143,7 +146,28 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             ),
             ListTile(
               leading: Icon(
-                Icons.description,
+                FontAwesomeIcons.calculator,
+                color: Colors.white,
+              ),
+              title: Text(
+                'BMI CAL',
+                style: TextStyle(
+                  fontFamily: 'Marvel',
+                  letterSpacing: 3,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (_) {
+                  return BMICal();
+                }));
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                FontAwesomeIcons.appStore,
                 color: Colors.white,
               ),
               title: Text(
@@ -164,7 +188,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             ),
             ListTile(
               leading: Icon(
-                Icons.account_box,
+                FontAwesomeIcons.dev,
                 color: Colors.white,
               ),
               title: Text(
@@ -262,101 +286,3 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     );
   }
 }
-// drawer: Drawer(
-//           child: Container(
-//             color: HexColor('#d38f12'),
-//             child: ListView(
-//               children: <Widget>[
-//                 DrawerHeader(
-//                   child: SingleChildScrollView(
-//                     scrollDirection: Axis.vertical,
-//                     child: Column(
-//                       mainAxisAlignment: MainAxisAlignment.center,
-//                       crossAxisAlignment: CrossAxisAlignment.center,
-//                       children: <Widget>[
-//                         CircleAvatar(
-//                           backgroundColor: HexColor('#d38f12'),
-//                           radius: 45.0,
-//                           child: Image.asset('images/icon.png'),
-//                         ),
-//                         Text(
-//                           'Healthy Recipes',
-//                           style: TextStyle(
-//                               color: Colors.white,
-//                               letterSpacing: 2,
-//                               fontWeight: FontWeight.bold,
-//                               fontFamily: 'Satisfy',
-//                               fontSize: 25.0),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                 ),
-// ListTile(
-//   leading: Icon(
-//     Icons.question_answer,
-//     color: Colors.white,
-//   ),
-//   title: Text(
-//     'HEALTH HACKS',
-//     style: TextStyle(
-//       fontFamily: 'Marvel',
-//       letterSpacing: 3,
-//       color: Colors.white,
-//       fontWeight: FontWeight.bold,
-//       fontSize: 15,
-//     ),
-//   ),
-//   onTap: () {
-//     Navigator.push(context, MaterialPageRoute(builder: (_) {
-//       return QuizSection();
-//     }));
-//   },
-// ),
-// ListTile(
-//   leading: Icon(
-//     Icons.description,
-//     color: Colors.white,
-//   ),
-//   title: Text(
-//     'ABOUT APP',
-//     style: TextStyle(
-//       fontFamily: 'Marvel',
-//       letterSpacing: 3,
-//       color: Colors.white,
-//       fontWeight: FontWeight.bold,
-//       fontSize: 15,
-//     ),
-//   ),
-//   onTap: () {
-//     Navigator.push(context, MaterialPageRoute(builder: (_) {
-//       return AboutApp();
-//     }));
-//   },
-// ),
-// ListTile(
-//   leading: Icon(
-//     Icons.account_box,
-//     color: Colors.white,
-//   ),
-//   title: Text(
-//     'DEVELOPER INFO',
-//     style: TextStyle(
-//       fontFamily: 'Marvel',
-//       letterSpacing: 3,
-//       color: Colors.white,
-//       fontWeight: FontWeight.bold,
-//       fontSize: 15,
-//     ),
-//   ),
-//   onTap: () {
-//     Navigator.push(context, MaterialPageRoute(builder: (_) {
-//       return DevInfo();
-//     }));
-//   },
-// ),
-//               ],
-//             ),
-//           ),
-//           elevation: 5,
-//         ),
