@@ -15,9 +15,9 @@ class BMICalculator {
   }
 
   String comments(){
-    if (_bmi >= 30.0){
+    if (_bmi > 30.0){
       return 'You have obesity! Obesity defined as excessive fat accumulation that presents a risk to health. Try to reduce your weight.';
-    } else if (_bmi >= 25.0) {
+    } else if (_bmi > 25.0) {
       return 'You have a higher than normal body weight. Try to exercise more.';
     } else if(_bmi >= 18.5) {
       return 'You have a normal body weight. Great job!';
