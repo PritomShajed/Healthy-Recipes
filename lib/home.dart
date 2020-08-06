@@ -88,124 +88,134 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return WillPopScope(
       onWillPop: _backPress,
       child: Material(
         child: FancyDrawerWrapper(
           cornerRadius: 20,
           hideOnContentTap: true,
-          itemGap: 1,
           backgroundColor: HexColor('#916108'),
           controller: _controller,
           drawerItems: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                CircleAvatar(
-                  backgroundColor: HexColor('#916108'),
-                  radius: 45.0,
-                  child: Image.asset('images/icon.png'),
+            SafeArea(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundColor: HexColor('#916108'),
+                          radius: 45.0,
+                          child: Image.asset('images/icon.png'),
+                        ),
+                        Text(
+                          'Healthy Recipes',
+                          style: TextStyle(
+                              color: Colors.white,
+                              letterSpacing: 2,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Satisfy',
+                              fontSize: 25.0),
+                        ),
+                        SizedBox(
+                          height: 7,
+                          width: 160,
+                          child: Divider(color: Colors.white38),
+                        ),
+                      ],
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.question_answer,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        'HEALTH HACKS',
+                        style: TextStyle(
+                          fontFamily: 'Marvel',
+                          letterSpacing: 3,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (_) {
+                          return QuizSection();
+                        }));
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        FontAwesomeIcons.calculator,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        'BMI CAL',
+                        style: TextStyle(
+                          fontFamily: 'Marvel',
+                          letterSpacing: 3,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (_) {
+                          return BMICal();
+                        }));
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        FontAwesomeIcons.appStore,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        'ABOUT APP',
+                        style: TextStyle(
+                          fontFamily: 'Marvel',
+                          letterSpacing: 3,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (_) {
+                          return AboutApp();
+                        }));
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        FontAwesomeIcons.dev,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        'DEV INFO',
+                        style: TextStyle(
+                          fontFamily: 'Marvel',
+                          letterSpacing: 3,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (_) {
+                          return DevInfo();
+                        }));
+                      },
+                    ),
+                  ],
                 ),
-                Text(
-                  'Healthy Recipes',
-                  style: TextStyle(
-                      color: Colors.white,
-                      letterSpacing: 2,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Satisfy',
-                      fontSize: 25.0),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 1,
-              width: 160,
-              child: Divider(color: Colors.white38),
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.question_answer,
-                color: Colors.white,
               ),
-              title: Text(
-                'HEALTH HACKS',
-                style: TextStyle(
-                  fontFamily: 'Marvel',
-                  letterSpacing: 3,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                ),
-              ),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) {
-                  return QuizSection();
-                }));
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                FontAwesomeIcons.calculator,
-                color: Colors.white,
-              ),
-              title: Text(
-                'BMI CAL',
-                style: TextStyle(
-                  fontFamily: 'Marvel',
-                  letterSpacing: 3,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                ),
-              ),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) {
-                  return BMICal();
-                }));
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                FontAwesomeIcons.appStore,
-                color: Colors.white,
-              ),
-              title: Text(
-                'ABOUT APP',
-                style: TextStyle(
-                  fontFamily: 'Marvel',
-                  letterSpacing: 3,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                ),
-              ),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) {
-                  return AboutApp();
-                }));
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                FontAwesomeIcons.dev,
-                color: Colors.white,
-              ),
-              title: Text(
-                'DEV INFO',
-                style: TextStyle(
-                  fontFamily: 'Marvel',
-                  letterSpacing: 3,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                ),
-              ),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) {
-                  return DevInfo();
-                }));
-              },
             ),
           ],
           child: Scaffold(
@@ -224,7 +234,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               leading: IconButton(
                 icon: Icon(
                   Icons.menu,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 onPressed: () {
                   _controller.toggle();

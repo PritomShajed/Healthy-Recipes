@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:food_app/color.dart';
 import 'package:food_app/home.dart';
-import './my_navigator.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -14,11 +14,16 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 2), () => Navigator.push(context, MaterialPageRoute(builder: (context) => Home())));
+    Timer(
+        Duration(seconds: 2),
+        () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Home())));
   }
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return Scaffold(
       backgroundColor: HexColor('#d38f12'),
       body: Stack(
@@ -37,10 +42,9 @@ class _SplashScreenState extends State<SplashScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircleAvatar(
-                        backgroundColor: HexColor('#d38f12'),
-                        radius: 45.0,
-                        child: Image.asset('images/icon.png')
-                      ),
+                          backgroundColor: HexColor('#d38f12'),
+                          radius: 45.0,
+                          child: Image.asset('images/icon.png')),
                       Padding(
                         padding: EdgeInsets.only(top: 10.0),
                       ),
@@ -82,5 +86,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-
-

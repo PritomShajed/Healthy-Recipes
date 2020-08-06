@@ -70,47 +70,82 @@ class _QuizSectionState extends State<QuizSection> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor('#916108'),
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(color: HexColor('#916108')),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Expanded(
-                flex: 2,
-                child: Container(
+      body: SafeArea(
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(color: HexColor('#916108')),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            color: HexColor("#916108"),
+                            height: 150,
+                            width: 150,
+                            child: Image.asset('images/icon.png'),
+                          ),
+                          Text(
+                            'Health Hacks',
+                            style: TextStyle(
+                                color: Colors.white,
+                                letterSpacing: 2,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Satisfy',
+                                fontSize: 25.0),
+                          ),
+                          SizedBox(
+                            height: 30,
+                            width: 150,
+                            child: Divider(
+                              color: Colors.white54,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              allQuiz.getQuestionText(),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'Marvel',
+                                letterSpacing: 3,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Container(
-                        color: HexColor("#916108"),
-                        height: 150,
-                        width: 150,
-                        child: Image.asset('images/icon.png'),
-                      ),
-                      Text(
-                        'Health Hacks',
-                        style: TextStyle(
-                            color: Colors.white,
-                            letterSpacing: 2,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Satisfy',
-                            fontSize: 25.0),
-                      ),
-                      SizedBox(
-                        height: 30,
-                        width: 150,
-                        child: Divider(
-                          color: Colors.white54,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
+                      RaisedButton(
+                        elevation: 5,
+                        color: HexColor('#d38f12'),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        onPressed: () {
+                          final player = AudioCache();
+                          player.play('click.mp3');
+                          checkAnswer(true);
+                        },
                         child: Text(
-                          allQuiz.getQuestionText(),
+                          'NEXT',
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'Marvel',
@@ -118,48 +153,18 @@ class _QuizSectionState extends State<QuizSection> {
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
-                          textAlign: TextAlign.center,
                         ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20.0),
                       ),
                     ],
                   ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    RaisedButton(
-                      elevation: 5,
-                      color: HexColor('#d38f12'),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      onPressed: () {
-                        final player = AudioCache();
-                        player.play('click.mp3');
-                        checkAnswer(true);
-                      },
-                      child: Text(
-                        'NEXT',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Marvel',
-                          letterSpacing: 3,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20.0),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          )
-        ],
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

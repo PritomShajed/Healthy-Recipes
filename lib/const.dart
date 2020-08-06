@@ -12,6 +12,13 @@ const kNumberTextStyle = TextStyle(
   fontFamily: 'Marvel',
 );
 
+const kAppBarTextStyle = TextStyle(
+  color: Colors.white,
+  letterSpacing: 2,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Satisfy',
+);
+
 const kGenderTextStyle = TextStyle(
   fontSize: 18,
   color: Colors.white,
